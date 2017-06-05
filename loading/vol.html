@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='UTF-8'>
+	<title>vol</title>
+</head>
+<style type="text/css">
+.wave-warapper{
+	width: 50px;
+	height: 40px;
+	margin: 50 auto;
+	font-size: 10px;
+	text-align: center;
+}
+.wave-warapper .w-rect{
+	background-color: #333;
+	height: 100%;
+	width: 6px;
+	display: inline-block;
+	-webkit-animation:waveStretch 1.2s infinite ease-in-out;
+	animation:waveStretch 1.2s infinite ease-in-out;
+}
+.wave-warapper .rect1{
+	-webkit-animation-delay:-1.2s;
+	animation-delay:-1.2s;
+}
+.wave-warapper .rect2{
+	-webkit-animation-delay:-1.1s;
+	animation-delay:-1.1s;
+}
+.wave-warapper .rect3{
+	-webkit-animation-delay:-1.0s;
+	animation-delay:-1.0s;
+}
+.wave-warapper .rect4{
+	-webkit-animation-delay:-.9s;
+	animation-delay:-.9s;
+}
+.wave-warapper .rect5{
+	-webkit-animation-delay:-.8s;
+	animation-delay:-.8s;
+}
+
+@-webkit-keyframes waveStretch{
+	0%,40%,100%{
+		-webkit-transform:scaleY(0.4);
+		transform:scaleY(0.4);
+	}
+	20%{
+		-webkit-transform:scaleY(1);
+		transform:scaleY(1);
+	}
+}
+@keyframes waveStretch{
+	0%,40%,100%{
+		-webkit-transform:scaleY(0.4);
+		transform:scaleY(0.4);
+	}
+	20%{
+		-webkit-transform:scaleY(1);
+		transform:scaleY(1);
+	}
+}
+
+</style>
+<body>
+	<div class='wave-warapper'>
+		<div class='w-rect rect1'></div>
+		<div class='w-rect rect2'></div>
+		<div class='w-rect rect3'></div>
+		<div class='w-rect rect4'></div>
+		<div class='w-rect rect5'></div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='UTF-8'>
+	<title>scratch</title>
+</head>
+<style type="text/css">
+#mycanvas{
+	border: 1px solid #000;
+	display: block;;
+	margin: 50px auto;
+	background-size: 300px 200px;
+	cursor: pointer;
+}
+</style>
+<body>
+<div class='container'>
+<canvas id='mycanvas' width='300' height='150'></canvas>
+</div>
+</body>
+</html>
+<script type="text/javascript" src='../js/sdm.js'></script>
+<script type="text/javascript">
+var canvas = getId('mycanvas'),
+	ctx = canvas.getContext('2d');
+var w = canvas.width,
+	h = canvas.height,
+	flag = false;
+// 随机显示内容
+var arrs = ['谢谢惠顾!','恭喜中特等奖','鼓励奖10元','谢谢惠顾!'];
+//随机索引
+var arr = arrs[Math.floor(Math.random()*arrs.length)];
+// 绘制在canvas
+ctx.font='bold 32px sans-serif';
+ctx.textAlign='center';
+ctx.textBaseline = 'middle';
+ctx.fillText(arr,w/2,h/2);
+// 信息换成canvas的背景图 1位最高质量
+var url = canvas.toDataURL('image/png',1);
+canvas.style.background='url('+url+')';
+ctx.clearRect(0,0,w,h);
+// 蒙版
+ctx.fillStyle='#ddd';
+ctx.fillRect(0,0,w,h);
+canvas.addEventListener('mousedown',function() {
+	flag = true;
+	ctx.globalCompositeOperation = 'destination-out';
+},false);
+
+canvas.addEventListener('mousemove',function(e) {
+	if (flag) {
+		var x = e.clientX - canvas.offsetLeft;
+		var y = e.clientY - canvas.offsetTop;
+		ctx.beginPath();
+		ctx.fillRect(x,y,30,30);
+		ctx.fill();
+	};
+},false);
+
+canvas.addEventListener('mouseup',function() {
+	flag = false;
+	ctx.globalCompositeOperation = 'source-over';
+},false);
+
+</script>

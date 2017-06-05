@@ -1,0 +1,110 @@
+<!doctype html>
+<head>
+<title>充电</title>
+<style>
+    .loading-area{
+        position:fixed;
+        top:50%;
+        left:50%;
+        margin:-50px 0
+                0 -40px;
+        width:80px;
+        height:100px;
+        border-radius:4px;
+        background-color:rgba(0,0,0,.04);
+}
+
+.icon-charge{
+        position:absolute;
+        top:50%;
+        left:50%;
+        margin:-10px 0 0 -20px;
+        width:40px;
+        height:20px;
+        /*border:1px
+                solid #333;
+        */ border-radius:4px;
+        background-color:#fff;
+}
+
+.icon-charge:after{
+        content:'';
+        display:inline-block;
+        position:absolute;
+        top:0;
+        left:0;
+        width:0;
+        height:20px;
+        border-radius:4px;
+        background-color:#ddd;
+        /*-webkit-animation:charge 2s linear alternate infinite;
+        */ animation:charge 2s linear alternate infinite;
+}
+
+@keyframes charge{
+        0%{
+        width:0;
+}
+
+100%{
+        width:40px;
+        background-color:#3dec3a;
+}
+
+}.icon-charge:before{
+        content:'';
+        position:absolute;
+        top:-12px;
+        left:-12px;
+        width:8px;
+        height:8px;
+        background-color:#000;
+        animation:move 8s ease infinite;
+}
+
+@keyframes
+                move{
+        0%{
+        top:-12px;
+        left:-12px;
+        transform:rotate(0deg);
+        border-radius:0;
+}
+
+25%{
+        top:-12px;
+        left:52px;
+        transform:rotate(360deg);
+        border-radius:50%;
+}
+
+50%{
+        top:32px;
+        left:52px;
+        transform:rotate(0deg);
+        border-radius:0;
+}
+
+75%{
+        top:32px;
+        left:-12px;
+        transform:rotate(360deg);
+        border-radius:50%;
+}
+
+100%{
+        top:-12px;
+        left:-12px;
+        transform:rotate(0deg);
+        border-radius:0;
+}
+
+}            
+</style>
+</head>
+<body>
+<div class="loading-area"> <i class="icon-charge"></i>
+</div>
+</body>
+
+</html>

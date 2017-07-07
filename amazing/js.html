@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+
+<head>
+    <meta charset="UTF-8">
+    <title>js</title>
+</head>
+<style>
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    position: relative;
+}
+
+@-webkit-keyframes show {
+    from {
+        -webkit-transform: translateY(0px);
+        transform: translateY(0px);
+        opacity: 0
+    }
+    to {
+        -webkit-transform: translateY(-50px);
+        transform: translateY(-50px);
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes hide {
+    from {
+        -webkit-transform: translateY(-50px);
+        transform: translateY(-50px);
+        opacity: 1
+    }
+    to {
+        -webkit-transform: translateY(0px);
+        transform: translateY(0px);
+        opacity: 0
+    }
+}
+
+.pop-up {
+    -webkit-transform: translateY(-50px);
+    transform: translateY(-50px);
+    animation: show 300ms ease-in-out;
+    -webkit-animation: show 300ms ease-in-out;
+}
+
+.pop-down {
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+    animation: hide 300ms ease-in-out;
+    -webkit-animation: hide 300ms ease-in-out;
+}
+</style>
+
+<body>
+    <button onclick="s.open('弹出框')">点击</button>
+</body>
+
+</html>
+<script>
+var log = console.log.bind(console)
+
+var foo = function() {
+    var _self = this;
+    _self.name = 'sdm';
+    _self.txt = '';
+    _self.html = '<div>' + _self.txt + '</div>';
+    return _self;
+}
+
+foo.prototype = {
+    constructor: foo,
+    init: function() {
+        log(this.name)
+    },
+    open: function(str, typr) {
+        var obj = str || '默认值';
+        var txt = document.createElement('p');
+        txt.style.position = 'absolute';
+        txt.setAttribute('class', 'pop-up');
+        txt.style.width = '100px';
+        txt.style.bottom = '-10px';
+        txt.style.left = '50%';
+        txt.style.marginLeft = '-50px';
+        txt.style.padding = '5px';
+        txt.style.borderRadius = '10px';
+        txt.style.fontSize = '16px';
+        txt.style.backgroundColor = 'rgba(0,0,0,0.6)';
+        txt.style.textAlign = "center";
+        txt.innerHTML = obj;
+        document.body.appendChild(txt);
+        setTimeout(function() {
+            txt.setAttribute('class', 'pop-down');
+            // txt.style.display = 'none';
+            setTimeout(() => {
+                document.body.removeChild(txt);
+            }, 200)
+        }, 1500)
+    },
+    setName: function(str) {
+        this.name = str
+    },
+    setTxt: function(str) {
+        this.txt = str
+    }
+}
+let f = new foo();
+f.init()
+foo.prototype.sdm = function() {
+    log('添加')
+}
+let s = new foo();
+s.sdm();
+s.init();
+</script>

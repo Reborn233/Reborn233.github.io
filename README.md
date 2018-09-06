@@ -1,5 +1,5 @@
 ##记录各种学习过程中知识
-[链接](http://reborn233.github.io/effects.github.io/)
+[链接](https://reborn233.github.io/effects/)
 
 ### 主要内容
 
